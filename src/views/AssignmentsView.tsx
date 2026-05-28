@@ -248,7 +248,7 @@ function EmptyStateIllustration() {
 /* ─────────── Empty State (Figma exact) ─────────── */
 function EmptyState({ onCreate }: { onCreate: () => void }) {
   return (
-    <div className="flex flex-col items-center justify-center py-20 text-center flex-1">
+    <div className="flex flex-col items-center justify-center py-16 sm:py-20 px-4 text-center flex-1">
       <EmptyStateIllustration />
 
       <h2 className="text-2xl font-bold text-gray-900 mb-3">
@@ -262,7 +262,7 @@ function EmptyState({ onCreate }: { onCreate: () => void }) {
 
       <button
         onClick={onCreate}
-        className="flex items-center gap-2 bg-gray-900 text-white px-6 py-3.5 rounded-full font-medium text-sm hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl"
+        className="inline-flex items-center justify-center gap-2 bg-gray-900 text-white px-5 sm:px-6 py-3.5 rounded-full font-medium text-sm hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <line x1="12" y1="5" x2="12" y2="19" />
@@ -287,10 +287,10 @@ function AssignmentCard({
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className="bg-white rounded-2xl p-5 lg:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200 relative">
+    <div className="bg-white rounded-2xl p-4 sm:p-5 lg:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200 relative overflow-hidden">
       <div className="flex items-start justify-between mb-3 lg:mb-4">
         <h3
-          className="text-[15px] lg:text-base font-bold text-gray-900 underline underline-offset-4 decoration-gray-900 cursor-pointer hover:text-orange-600 hover:decoration-orange-600 transition-colors"
+          className="text-[15px] lg:text-base font-bold text-gray-900 underline underline-offset-4 decoration-gray-900 cursor-pointer hover:text-orange-600 hover:decoration-orange-600 transition-colors min-w-0 break-words pr-2"
           onClick={() => onView(assignment)}
         >
           {assignment.title}
@@ -424,7 +424,7 @@ export default function AssignmentsView() {
       ) : (
         <div className="flex-1 overflow-y-auto">
           {/* Filter + Search bar — Figma exact */}
-          <div className="px-4 lg:px-6 py-3 lg:py-4 flex items-center gap-3">
+          <div className="px-4 lg:px-6 py-3 lg:py-4 flex items-center gap-3 min-w-0">
             {/* Filter button */}
             <button className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-800 transition-colors flex-shrink-0">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -433,7 +433,7 @@ export default function AssignmentsView() {
               <span>Filter</span>
             </button>
             {/* Search */}
-            <div className="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-2 flex-1 lg:flex-none lg:w-72 bg-white">
+            <div className="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-2 flex-1 min-w-0 lg:flex-none lg:w-72 bg-white">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400 flex-shrink-0">
                 <circle cx="11" cy="11" r="7" />
                 <path d="M21 21l-4.35-4.35" strokeLinecap="round" />
@@ -443,7 +443,7 @@ export default function AssignmentsView() {
                 placeholder="Search Name"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 text-sm bg-transparent focus:outline-none text-gray-900 placeholder:text-gray-400"
+                className="flex-1 min-w-0 text-sm bg-transparent focus:outline-none text-gray-900 placeholder:text-gray-400"
               />
             </div>
           </div>

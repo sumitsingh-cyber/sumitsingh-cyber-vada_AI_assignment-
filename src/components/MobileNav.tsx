@@ -101,7 +101,7 @@ export default function MobileNav() {
   ];
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 px-3 pb-5 pt-1">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 px-3 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-1">
       {/* Figma: #181818 rounded pill with double drop shadow */}
       <div
         className="rounded-3xl overflow-hidden"
@@ -126,7 +126,7 @@ export default function MobileNav() {
                   style={{
                     color: active ? '#ffffff' : 'rgba(255,255,255,0.25)',
                     fontWeight: active ? 700 : 400,
-                    letterSpacing: active ? '-0.01em' : '0',
+                    letterSpacing: 0,
                   }}
                 >
                   {label}

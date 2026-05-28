@@ -39,12 +39,12 @@ export default function App() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50">
+    <div className="flex h-dvh min-h-dvh overflow-hidden bg-gray-50">
       {/* Desktop Sidebar — fixed w-[304px] */}
       <Sidebar />
 
       {/* Main Content — offset by sidebar width on desktop */}
-      <div className="flex flex-col flex-1 min-w-0 overflow-hidden lg:ml-[304px]">
+      <div className="flex flex-col flex-1 min-w-0 w-full overflow-hidden lg:ml-[304px]">
         {/* Mobile header */}
         <MobileHeader />
 

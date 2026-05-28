@@ -138,7 +138,7 @@ export default function ViewPaperView() {
   return (
     <div className="flex flex-col flex-1 overflow-y-auto pb-24 lg:pb-8">
       {/* AI Banner */}
-      <div className="mx-4 lg:mx-6 mt-4 bg-gray-900 rounded-2xl p-5 lg:p-6 text-white">
+      <div className="mx-3 sm:mx-4 lg:mx-6 mt-4 bg-gray-900 rounded-2xl p-4 sm:p-5 lg:p-6 text-white">
         <p className="text-sm lg:text-base font-medium leading-relaxed mb-4">
           {paper.aiMessage}
         </p>
@@ -169,30 +169,30 @@ export default function ViewPaperView() {
       </div>
 
       {/* Question Paper */}
-      <div className="mx-4 lg:mx-6 mt-4 mb-4">
+      <div className="mx-3 sm:mx-4 lg:mx-6 mt-4 mb-4">
         <div ref={paperRef} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           {/* Header */}
-          <div className="px-8 lg:px-12 pt-8 pb-4 text-center border-b border-gray-200">
+          <div className="px-4 sm:px-8 lg:px-12 pt-6 sm:pt-8 pb-4 text-center border-b border-gray-200">
             <h1 className="text-xl lg:text-2xl font-bold text-gray-900 mb-1">{paper.schoolName}</h1>
             <div className="text-base font-semibold text-gray-800 mt-2">Subject: {paper.subject}</div>
             <div className="text-base font-semibold text-gray-800">Class: {paper.grade}</div>
           </div>
 
           {/* Meta info */}
-          <div className="px-8 lg:px-12 py-4 border-b border-gray-200">
-            <div className="flex items-center justify-between text-sm text-gray-700 mb-3">
+          <div className="px-4 sm:px-8 lg:px-12 py-4 border-b border-gray-200">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 text-sm text-gray-700 mb-3">
               <span className="font-medium">Time Allowed: {paper.timeAllowed} minutes</span>
               <span className="font-bold">Maximum Marks: {paper.maximumMarks}</span>
             </div>
             <p className="text-sm text-gray-700 mb-4">{paper.generalInstructions}</p>
 
             {/* Student Info */}
-            <div className="space-y-2 text-sm text-gray-800">
+            <div className="space-y-2 text-sm text-gray-800 min-w-0">
               <div className="flex items-center gap-2">
                 <span className="font-medium">Name:</span>
                 <div className="flex-1 border-b border-gray-400 h-5 max-w-[200px]"></div>
               </div>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                 <div className="flex items-center gap-2">
                   <span className="font-medium">Roll Number:</span>
                   <div className="border-b border-gray-400 h-5 w-[100px]"></div>
@@ -206,7 +206,7 @@ export default function ViewPaperView() {
           </div>
 
           {/* Sections */}
-          <div className="px-8 lg:px-12 py-6 space-y-8">
+          <div className="px-4 sm:px-8 lg:px-12 py-5 sm:py-6 space-y-8">
             {paper.sections.map((section: Section) => (
               <div key={section.id}>
                 <div className="text-center mb-4">
@@ -220,13 +220,13 @@ export default function ViewPaperView() {
                 {/* Questions */}
                 <ol className="space-y-4">
                   {section.questions.map((question: Question, qIdx: number) => (
-                    <li key={question.id} className="flex gap-3">
+                    <li key={question.id} className="flex gap-2 sm:gap-3 min-w-0">
                       <span className="text-sm font-semibold text-gray-800 min-w-[24px] mt-0.5">
                         {qIdx + 1}.
                       </span>
-                      <div className="flex-1">
-                        <div className="flex items-start justify-between gap-2 flex-wrap">
-                          <p className="text-sm text-gray-800 leading-relaxed flex-1 whitespace-pre-line">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                          <p className="text-sm text-gray-800 leading-relaxed flex-1 min-w-0 whitespace-pre-line break-words">
                             {question.text}
                           </p>
                           <div className="flex items-center gap-2 flex-shrink-0">
@@ -239,7 +239,7 @@ export default function ViewPaperView() {
 
                         {/* MCQ Options placeholder */}
                         {question.type === 'Multiple Choice Questions' && (
-                          <div className="mt-2 grid grid-cols-2 gap-1.5 text-xs text-gray-600">
+                          <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-gray-600">
                             {['(a) Option A', '(b) Option B', '(c) Option C', '(d) Option D'].map((opt) => (
                               <span key={opt} className="flex items-center gap-1">{opt}</span>
                             ))}
@@ -265,7 +265,7 @@ export default function ViewPaperView() {
           </div>
 
           {/* Footer */}
-          <div className="px-8 lg:px-12 py-4 text-center border-t border-gray-200">
+          <div className="px-4 sm:px-8 lg:px-12 py-4 text-center border-t border-gray-200">
             <p className="text-xs text-gray-400">*** End of Question Paper ***</p>
             <p className="text-xs text-gray-400 mt-1">Generated by VedaAI • {new Date(paper.createdAt).toLocaleDateString()}</p>
           </div>

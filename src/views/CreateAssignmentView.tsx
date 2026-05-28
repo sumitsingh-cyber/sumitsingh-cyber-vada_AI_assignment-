@@ -103,7 +103,7 @@ export default function CreateAssignmentView() {
   return (
     <div className="flex flex-col flex-1 overflow-y-auto pb-32 lg:pb-8">
       {/* Page header */}
-      <div className="px-6 py-4 border-b border-gray-100 bg-gray-50">
+      <div className="hidden lg:block px-6 py-4 border-b border-gray-100 bg-gray-50">
         <div className="flex items-center gap-2 mb-0.5">
           <div className="w-3 h-3 rounded-full bg-green-500 shadow-sm shadow-green-300"></div>
           <h1 className="text-xl font-bold text-gray-900">Create Assignment</h1>
@@ -111,11 +111,11 @@ export default function CreateAssignmentView() {
         <p className="text-sm text-gray-500 ml-5">Set up a new assignment for your students</p>
       </div>
 
-      <div className="flex-1 px-4 lg:px-8 py-6 max-w-3xl mx-auto w-full">
+      <div className="flex-1 px-3 sm:px-4 lg:px-8 py-5 sm:py-6 max-w-3xl mx-auto w-full">
         <StepIndicator step={step} total={2} />
 
         {step === 1 && (
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-1">Assignment Details</h2>
             <p className="text-sm text-gray-500 mb-6">Basic information about your assignment</p>
 
@@ -158,7 +158,7 @@ export default function CreateAssignmentView() {
               </svg>
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col items-center justify-center py-12 px-6 text-center">
+              <div className="relative z-10 flex flex-col items-center justify-center py-10 sm:py-12 px-4 sm:px-6 text-center">
                 {formData.uploadedFileName ? (
                   <>
                     {/* Upload cloud icon */}
@@ -168,7 +168,7 @@ export default function CreateAssignmentView() {
                         <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
                       </svg>
                     </div>
-                    <p className="text-base font-semibold text-gray-900 mb-1">{formData.uploadedFileName}</p>
+                    <p className="text-base font-semibold text-gray-900 mb-1 break-all">{formData.uploadedFileName}</p>
                     <p className="text-sm text-green-600">✓ File selected</p>
                   </>
                 ) : (
@@ -226,7 +226,7 @@ export default function CreateAssignmentView() {
             </div>
 
             {/* Subject & Grade */}
-            <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-800 mb-2">
                   Subject <span className="text-red-500">*</span>
@@ -335,12 +335,12 @@ export default function CreateAssignmentView() {
         )}
 
         {step === 2 && (
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-1">Question Configuration</h2>
             <p className="text-sm text-gray-500 mb-6">Configure question types, counts, and marks</p>
 
             {/* Question Type Header */}
-            <div className="grid grid-cols-12 gap-3 mb-3 px-1">
+            <div className="hidden sm:grid grid-cols-12 gap-3 mb-3 px-1">
               <div className="col-span-6 text-xs font-semibold text-gray-500 uppercase tracking-wide">Question Type</div>
               <div className="col-span-3 text-xs font-semibold text-gray-500 uppercase tracking-wide text-center">No. of Qs</div>
               <div className="col-span-2 text-xs font-semibold text-gray-500 uppercase tracking-wide text-center">Marks</div>
@@ -353,13 +353,16 @@ export default function CreateAssignmentView() {
 
             <div className="space-y-3 mb-5">
               {formData.questionTypes.map((qt) => (
-                <div key={qt.id} className="grid grid-cols-12 gap-3 items-center p-3 bg-gray-50 rounded-xl">
+                <div key={qt.id} className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-stretch sm:items-center p-3 bg-gray-50 rounded-xl">
                   {/* Type selector */}
-                  <div className="col-span-6">
+                  <div className="sm:col-span-6 min-w-0">
+                    <label className="block sm:hidden text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">
+                      Question Type
+                    </label>
                     <select
                       value={qt.type}
                       onChange={(e) => updateQuestionType(qt.id, { type: e.target.value })}
-                      className="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-orange-100 focus:border-orange-300 transition-all"
+                      className="w-full min-w-0 px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-orange-100 focus:border-orange-300 transition-all"
                     >
                       {QUESTION_TYPE_OPTIONS.map((opt) => (
                         <option key={opt} value={opt}>{opt}</option>
@@ -368,45 +371,51 @@ export default function CreateAssignmentView() {
                   </div>
 
                   {/* Count */}
-                  <div className="col-span-3 flex items-center gap-1 justify-center">
-                    <button
-                      type="button"
-                      onClick={() => updateQuestionType(qt.id, { count: Math.max(1, qt.count - 1) })}
-                      className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors text-xs"
-                    >
-                      −
-                    </button>
-                    <span className="w-6 text-center text-sm font-semibold text-gray-800">{qt.count}</span>
-                    <button
-                      type="button"
-                      onClick={() => updateQuestionType(qt.id, { count: Math.min(20, qt.count + 1) })}
-                      className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors text-xs"
-                    >
-                      +
-                    </button>
+                  <div className="sm:col-span-3 flex items-center justify-between sm:justify-center gap-3">
+                    <span className="sm:hidden text-xs font-semibold text-gray-500 uppercase tracking-wide">Questions</span>
+                    <div className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => updateQuestionType(qt.id, { count: Math.max(1, qt.count - 1) })}
+                        className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors text-xs"
+                      >
+                        -
+                      </button>
+                      <span className="w-6 text-center text-sm font-semibold text-gray-800">{qt.count}</span>
+                      <button
+                        type="button"
+                        onClick={() => updateQuestionType(qt.id, { count: Math.min(20, qt.count + 1) })}
+                        className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors text-xs"
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
 
                   {/* Marks */}
-                  <div className="col-span-2 flex items-center gap-1 justify-center">
-                    <button
-                      type="button"
-                      onClick={() => updateQuestionType(qt.id, { marks: Math.max(1, qt.marks - 1) })}
-                      className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors text-xs"
-                    >
-                      −
-                    </button>
-                    <span className="w-5 text-center text-sm font-semibold text-gray-800">{qt.marks}</span>
-                    <button
-                      type="button"
-                      onClick={() => updateQuestionType(qt.id, { marks: Math.min(20, qt.marks + 1) })}
-                      className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors text-xs"
-                    >
-                      +
-                    </button>
+                  <div className="sm:col-span-2 flex items-center justify-between sm:justify-center gap-3">
+                    <span className="sm:hidden text-xs font-semibold text-gray-500 uppercase tracking-wide">Marks</span>
+                    <div className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => updateQuestionType(qt.id, { marks: Math.max(1, qt.marks - 1) })}
+                        className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors text-xs"
+                      >
+                        -
+                      </button>
+                      <span className="w-5 text-center text-sm font-semibold text-gray-800">{qt.marks}</span>
+                      <button
+                        type="button"
+                        onClick={() => updateQuestionType(qt.id, { marks: Math.min(20, qt.marks + 1) })}
+                        className="w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors text-xs"
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
 
                   {/* Remove */}
-                  <div className="col-span-1 flex justify-center">
+                  <div className="sm:col-span-1 flex justify-end sm:justify-center">
                     <button
                       type="button"
                       onClick={() => removeQuestionType(qt.id)}
@@ -470,7 +479,7 @@ export default function CreateAssignmentView() {
             {/* Summary */}
             <div className="bg-orange-50 rounded-xl p-4 border border-orange-100">
               <h4 className="text-sm font-semibold text-orange-800 mb-2">Summary</h4>
-              <div className="grid grid-cols-2 gap-2 text-xs text-orange-700">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-orange-700">
                 <span>Total Questions: <strong>{formData.questionTypes.reduce((s, q) => s + q.count, 0)}</strong></span>
                 <span>Total Marks: <strong>{formData.questionTypes.reduce((s, q) => s + q.count * q.marks, 0)}</strong></span>
                 <span>Sections: <strong>{formData.questionTypes.length}</strong></span>
@@ -481,11 +490,11 @@ export default function CreateAssignmentView() {
         )}
 
         {/* Navigation Buttons */}
-        <div className="flex items-center gap-4 mt-6">
+        <div className="flex items-center gap-3 sm:gap-4 mt-6">
           <button
             type="button"
             onClick={() => step === 1 ? setView('assignments') : setStep(1)}
-            className="flex-1 flex items-center justify-center gap-2 py-3.5 px-6 bg-white border border-gray-300 text-gray-700 font-semibold rounded-full hover:bg-gray-50 transition-all shadow-sm"
+            className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 sm:px-6 bg-white border border-gray-300 text-gray-700 font-semibold rounded-full hover:bg-gray-50 transition-all shadow-sm text-sm"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             Previous
@@ -494,7 +503,7 @@ export default function CreateAssignmentView() {
             <button
               type="button"
               onClick={handleNext}
-              className="flex-1 flex items-center justify-center gap-2 py-3.5 px-6 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition-all shadow-md"
+              className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 sm:px-6 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition-all shadow-md text-sm"
             >
               Next
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -503,7 +512,7 @@ export default function CreateAssignmentView() {
             <button
               type="button"
               onClick={handleSubmit}
-              className="flex-1 flex items-center justify-center gap-2 py-3.5 px-6 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all shadow-md hover:shadow-lg"
+              className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 sm:px-6 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-red-600 transition-all shadow-md hover:shadow-lg text-sm"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2L2 7l10 5 10-5-10-5z"/>

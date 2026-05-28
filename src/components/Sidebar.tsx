@@ -184,7 +184,7 @@ export default function Sidebar() {
         <button onClick={() => setView('home')} className="flex items-center gap-3">
           <VedaLogoIcon />
           {/* Wordmark text */}
-          <span className="text-[22px] font-bold tracking-tight" style={{ color: '#303030', fontFamily: 'system-ui,-apple-system,sans-serif' }}>
+          <span className="text-[22px] font-bold tracking-tight" style={{ color: '#303030' }}>
             VedaAI
           </span>
         </button>

@@ -40,7 +40,7 @@ function FigmaHeader() {
               </svg>
             </div>
             {/* VedaAI Text */}
-            <span className="text-[#303030] text-lg font-bold tracking-tight leading-none" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+            <span className="text-[#303030] text-lg font-bold tracking-tight leading-none">
               VedaAI
             </span>
           </div>
