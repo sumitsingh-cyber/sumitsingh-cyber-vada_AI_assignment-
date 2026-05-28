@@ -31,7 +31,7 @@
 
 <br />
 
-[🌐 Live Demo](https://vedaai-assessment.vercel.app) · [📁 GitHub Repo](https://github.com/YOUR_USERNAME/vedaai-assessment) · [📋 Figma Design](https://www.figma.com/design/nB2HMm1BhTpmHcHrmEslGB/VedaAI---Hiring-Assignment) · [📝 Submit Here](https://docs.google.com/forms/d/e/1FAIpQLSeL19GVvVT8vZrTx67hMWKTXLyJSyhkW5XGyzh7Ppt5w8P1jw/viewform)
+[🌐 Live Demo](https://ai-assessment-creator-assignment1.vercel.app) · [📁 GitHub Repo](https://github.com/sumitsingh-cyber/sumitsingh-cyber-vada_AI_assignment-) · [📋 Figma Design](https://www.figma.com/design/nB2HMm1BhTpmHcHrmEslGB/VedaAI---Hiring-Assignment) · [📝 Submit Here](https://docs.google.com/forms/d/e/1FAIpQLSeL19GVvVT8vZrTx67hMWKTXLyJSyhkW5XGyzh7Ppt5w8P1jw/viewform)
 
 </div>
 
@@ -105,7 +105,7 @@
 ## 🌐 Live Demo
 
 ```
-🔗 https://vedaai-assessment.vercel.app
+🔗 https://ai-assessment-creator-assignment1.vercel.app
 ```
 
 The app is fully client-side — no backend required. All AI generation, WebSocket updates, and data persistence are simulated with realistic flows that mirror the production backend spec exactly.
@@ -313,7 +313,7 @@ The app is fully client-side — no backend required. All AI generation, WebSock
 ## 📁 Project Structure
 
 ```
-vedaai-assessment/
+sumitsingh-cyber-vada_AI_assignment-/
 │
 ├── 📄 README.md                     ← Project documentation (this file)
 ├── 📄 SETUP.md                      ← Step-by-step local & deployment guide
@@ -849,8 +849,8 @@ Desktop: ≥ 1024px → fixed sidebar (304px) + top header
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/YOUR_USERNAME/vedaai-assessment.git
-cd vedaai-assessment
+git clone https://github.com/sumitsingh-cyber/sumitsingh-cyber-vada_AI_assignment-.git
+cd sumitsingh-cyber-vada_AI_assignment-
 
 # 2. Install dependencies
 npm install
@@ -1093,8 +1093,8 @@ copies or substantial portions of the Software.
 
 | Resource | Link |
 |----------|------|
-| 🌐 **Live Demo** | [vedaai-assessment.vercel.app](https://vedaai-assessment.vercel.app) |
-| 📁 **GitHub** | [github.com/YOUR_USERNAME/vedaai-assessment](https://github.com/YOUR_USERNAME/vedaai-assessment) |
+| 🌐 **Live Demo** | [ai-assessment-creator-assignment1.vercel.app](https://ai-assessment-creator-assignment1.vercel.app) |
+| 📁 **GitHub** | [github.com/sumitsingh-cyber/sumitsingh-cyber-vada_AI_assignment-](https://github.com/sumitsingh-cyber/sumitsingh-cyber-vada_AI_assignment-) |
 | 🎨 **Figma Design** | [VedaAI Hiring Assignment](https://www.figma.com/design/nB2HMm1BhTpmHcHrmEslGB/VedaAI---Hiring-Assignment) |
 | 📝 **Submit Here** | [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSeL19GVvVT8vZrTx67hMWKTXLyJSyhkW5XGyzh7Ppt5w8P1jw/viewform) |
 | 🚀 **Setup Guide** | [SETUP.md](./SETUP.md) |
